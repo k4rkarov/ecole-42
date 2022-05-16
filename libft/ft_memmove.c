@@ -6,9 +6,11 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 18:34:58 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/07 19:26:02 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:11:17 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

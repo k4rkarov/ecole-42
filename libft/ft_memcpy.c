@@ -6,9 +6,11 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:31:44 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/06 21:52:30 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:09:24 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

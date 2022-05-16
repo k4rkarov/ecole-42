@@ -6,9 +6,11 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 19:34:30 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/07 20:56:53 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:21:11 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {
@@ -23,7 +25,7 @@ void	*ft_memset(void *b, int c, size_t len)
 		y++;
 		len--;
 	}
-	return (b);
+	return ((char *)b);
 }
 
 /*#include <stdio.h>
@@ -31,7 +33,6 @@ void	*ft_memset(void *b, int c, size_t len)
 int main()
 {
     char *str = strdup("Hello World!");
-
     ft_memset(str, '$', 5);
     printf("%s\n", str);
 }*/

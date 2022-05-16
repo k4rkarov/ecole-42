@@ -6,9 +6,11 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:38:58 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/09 21:18:54 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:15:20 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
@@ -30,7 +32,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	return (0);
 }
 
-i/*#include <stdio.h>
+/*#include <stdio.h>
 int main(void)
 {
 	char string1[] = "avada kedavra";

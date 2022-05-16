@@ -6,9 +6,11 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 19:18:24 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/07 19:25:09 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:11:52 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

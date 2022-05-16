@@ -1,44 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 16:32:05 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/12 18:46:39 by ide-frei         ###   ########.fr       */
+/*   Created: 2022/05/12 19:39:51 by ide-frei          #+#    #+#             */
+/*   Updated: 2022/05/16 14:20:16 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned char	*ptr;
-	int				i;
+	char	*sub;
+	int		i;
 
 	i = 0;
-	ptr = s;
-	while (n > 0)
+	sub = malloc(sizeof(char) * len + 1);
+	while ((s[start]) && (start < len))
 	{
-		ptr[i] = 0;
+		sub[i] = (char)s[start];
+		start++;
 		i++;
-		n--;
 	}
+	while (start <= len)
+	{
+		sub[start] = '\0';
+		start++;
+	}
+	if (sub == NULL)
+		return (NULL);
+	return (sub);
 }
 
 /*#include <stdio.h>
-int main(void)
+int main (void)
 {
-	char str[] = "avadakedavra";
-	int i = 0;
-
-	ft_bzero(str, 5);
-
-	while (str[i])
-	{
-		printf("%c", str[i]);
-		i++;
-	}
+	char *origin = "avada kedavra";
+	char *duplicate;
+	
+	duplicate = ft_substr(origin, 6, ft_strlen(origin));
+	
+	printf("Dup:%s\n", duplicate);
+	
 	return (0);
 }*/

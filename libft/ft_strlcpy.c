@@ -6,24 +6,11 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:18:50 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/09 15:49:34 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:10:38 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include <string.h>
-
-int	ft_strlen(char *str)
-{
-	int	x;
-
-	x = 0;
-	while (*str)
-	{
-		str++;
-		x++;
-	}
-	return (x);
-}*/
+#include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {

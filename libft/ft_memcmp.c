@@ -6,11 +6,12 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:50:24 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/09 17:01:21 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:05:21 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <string.h>
+#include "libft.h"
+
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned int	x;

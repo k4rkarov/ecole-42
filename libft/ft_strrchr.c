@@ -6,22 +6,11 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:36:15 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/09 19:57:17 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:27:45 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int	x;
-
-	x = 0;
-	while (*str)
-	{
-		str++;
-		x++;
-	}
-	return (x);
-}
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
