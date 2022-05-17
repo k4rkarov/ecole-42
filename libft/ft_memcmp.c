@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:50:24 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/11 21:05:21 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:30:56 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned int	x;
-	const char		*s11;
-	const char		*s22;
+	unsigned char	*s11;
+	unsigned char	*s22;
 
-	s11 = s1;
-	s22 = s2;
+	s11 = (unsigned char *)s1;
+	s22 = (unsigned char *)s2;
 	if (n == 0)
 		return (0);
 	x = 0;
-	while (s11[x] && s22[x] && (s11[x] == s22[x]) && x < n)
+	while (x < n - 1)
 	{
+		if (s11[x] != s22[x])
+			return (s11[x] - s22[x]);
 		x++;
 	}
-	if (x == n)
-		return (s11[x - 1] - s22[x - 1]);
-	return (s11[x] - s22[x]);
+	return (0);
 }
 
 /*#include <stdio.h>

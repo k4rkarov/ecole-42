@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 18:34:58 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/11 21:11:17 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:20:40 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,27 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*tdst;
-	char	*tsrc;
+	size_t i;
 
-	tdst = dst;
-	tsrc = (char *)src;
-	if (tdst < tsrc)
+	if ((char *)dst < (char *)src)
 	{
-		while (len)
+		i = 0;
+		while (i < len)
 		{
-			*tdst = *tsrc;
-			tsrc++;
-			tdst++;
-			len--;
+			((char *)dst)[i] = ((char *)src)[i];
+			i++;
 		}
 	}
-	else
+	if ((char *)src < (char *)dst)
 	{
-		tsrc += len - 1;
-		tdst += len - 1;
-		while (len)
+		i = len - 1;
+		while ((int)i >= 0)
 		{
-			*tdst = *tsrc;
-			tsrc--;
-			tdst--;
-			len--;
+			((char *)dst)[i] = ((char *)src)[i];
+			i--;
 		}
 	}
-	return (dst);
+	return ((char *)dst);
 }
 
 /*int main () {
