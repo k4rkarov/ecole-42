@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 19:39:51 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/16 14:20:16 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:46:37 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,27 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*sub;
-	int		i;
+	char		*sub;
+	size_t		size_s;
+	size_t		size_max;
 
-	i = 0;
+	size_max = 0;
+	size_s = 0;
+	if (!s)
+		return (NULL);
 	sub = malloc(sizeof(char) * len + 1);
-	while ((s[start]) && (start < len))
-	{
-		sub[i] = (char)s[start];
-		start++;
-		i++;
-	}
-	while (start <= len)
-	{
-		sub[start] = '\0';
-		start++;
-	}
 	if (sub == NULL)
 		return (NULL);
+	while (s[size_s])
+	{
+		if (size_s >= start && size_max < len)
+		{
+			sub[size_max] = (char)s[size_s];
+			size_max++;		
+		}
+		size_s++;
+	}
+	sub[size_max] = '\0';
 	return (sub);
 }
 
@@ -41,7 +44,7 @@ int main (void)
 	char *origin = "avada kedavra";
 	char *duplicate;
 	
-	duplicate = ft_substr(origin, 6, ft_strlen(origin));
+	duplicate = ft_substr(origin, 5, ft_strlen(origin));
 	
 	printf("Dup:%s\n", duplicate);
 	

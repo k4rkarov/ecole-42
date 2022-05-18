@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 14:15:30 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/16 20:03:30 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/18 18:08:52 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,25 @@
 #include <stdio.h>
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str1;
-	char	*strset;
-	int		count;
-	int		count2;
+	char	*res;
+	int		start;
+	int		end;
 	
-	str1 = (char *)s1;
-	strset = (char *)set;
-	count = 0;
-	count2 = 0;
-	str1 = (char *)malloc(ft_strlen(str1) + 1);
-	if (str1 == NULL)
-		return (NULL);
-	while (s1[count])
-	{
-		str1[count] = s1[count];
-		if (str1[count] != strset[count2])
-		{
-			printf("%c\n", str1[count]);
-		}
-		count++;
-	}
-	str1[count] = '\0';
-	return (str1);
-
+	if (!s1)
+		return (0);
+	res = (char *)s1;
+	start = 0;
+	end = ft_strlen((char *)s1) - 1;
+	while (s1[start] != 0 && ft_strchr(set, s1[start]))
+		start++;
+	while (s1[start] != 0 && ft_strchr(set, s1[end]))
+		end--;
+	res = ft_substr(s1, start, end - start + 1);
+	return (res);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 int main (void)
 {
-	printf("%s\n", ft_strtrim("+avada+kedavra+", "+"));
-}
+	printf("%s\n", ft_strtrim("ABCavadaABCkedavraABC", "ABC"));
+}*/

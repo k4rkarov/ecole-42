@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:46:20 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/16 14:18:52 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:49:00 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		count;
 	int		count2;
 
+	if (s1 == NULL)
+		return (NULL);
 	str1 = (char *)s1;
 	str2 = (char *)s2;
 	count = 0;
 	count2 = 0;
 	str1 = (char *)malloc(ft_strlen(str1) + ft_strlen(str2) + 1);
-	if (s1 == NULL)
+	if (!str1)
 		return (NULL);
 	while (s1[count])
 	{

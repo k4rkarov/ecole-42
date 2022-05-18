@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 20:13:48 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/11 21:08:36 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/18 20:43:24 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,33 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	unsigned int	count;
-	unsigned int	count2;
+	unsigned int	size_dest;
+	unsigned int	size_src;
 
-	count = 0;
-	count2 = 0;
-	while (dst[count])
+	size_dest = 0;
+	size_src = 0;
+	while (dst[size_dest])
 	{
-		count++;
+		size_dest++;
 	}
-	while (src[count2] && count2 < dstsize)
+	while ((src[size_src]) && (size_src < dstsize))
 	{
-		dst[count + count2] = src[count2];
-		count2++;
+		dst[size_dest + size_src] = src[size_src];
+		size_src++;
 	}
-	dst[count + count2] = '\0';
-	return (ft_strlen(dst));
+	dst[size_dest + size_src] = '\0';
+	return (ft_strlen(dst) + ft_strlen((char *)&src[size_src]));
 }
 
 /*#include <stdio.h>
 #include <string.h>
 int	main(void)
 {
-	char	string1[15] = "avada";
-	char	string2[] = "kedavra";
-	printf("%zu\n", ft_strlcat(string1, string2, 13));
-	char	string3[15] = "avada";
-	printf("%lu\n", strlcat(string3, string2, 13));
+	char	destination[15] = "avada";
+	char	origin[] = "kedavra";
+	printf("%lu\n", ft_strlcat(destination, origin, ft_strlen(destination)));
+	char	destination2[15] = "avada";
+	printf("%lu\n", strlcat(destination2, origin, ft_strlen(destination2)));
 
 	return (0);
 }*/

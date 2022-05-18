@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 18:34:58 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/16 19:20:40 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/16 21:46:06 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t i;
+	size_t	i;
 
 	if ((char *)dst < (char *)src)
 	{

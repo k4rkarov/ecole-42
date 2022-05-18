@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:31:44 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/16 19:04:05 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/16 21:46:41 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!dst && !src && n > 0)
-		return(0);
+		return (0);
 	while (n-- > 0)
 	{
 		((char *) dst)[i] = ((char *) src)[i];
