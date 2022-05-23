@@ -6,46 +6,44 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:31:23 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/12 19:28:17 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/23 19:06:13 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 int	ft_atoi(const char *str);
 
-int	ft_catnbr(const char *str);
+static int	ft_catnbr(const char *str);
 
-int	ft_catnbr(const char *str)
+static int	ft_catnbr(const char *str)
 {
-	unsigned int	counter;
-	unsigned int	mult;
-	int				res;
+	int	counter;
+	int	res;
 
 	counter = 0;
-	while (str[counter] >= '0' && str[counter] <= '9' && str[counter] != 0)
-			counter++;
-	mult = 1;
 	res = 0;
-	while (counter > 0)
+	while (str[counter] >= '0' && str[counter] <= '9' && str[counter] != 0)
 	{
-		res += (str[counter - 1] - '0') * mult;
-		mult *= 10;
-		counter--;
+		res = res * 10 + (str[counter] - '0');
+		counter++;
 	}
 	return (res);
 }
 
 int	ft_atoi(const char *str)
 {
-	unsigned int	count;
-	int				res;
+	int	count;
+	int	res;
 
-	while (*str && (*str == ' ' || (*str >= '\t' && *str <= '\r')))
-			str++;
 	count = 0;
-	if (*str == '-')
+	while (str[count] && (str[count] == ' ' ||
+			   (str[count] >= '\t' && str[count] <= '\r')))
 		count++;
-	res = ft_catnbr(str);
-	if (count % 2 != 0)
+	if (str[count] == '-' || str[count] == '+')
+		count++;
+	res = ft_catnbr(str + count);
+	if (str[count - 1] == '-')
 		res *= -1;
 	return (res);
 }
