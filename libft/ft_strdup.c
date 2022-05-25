@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 20:16:10 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/23 19:08:43 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:37:35 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ char	*ft_strdup(const char *s1)
 	if (dst == NULL)
 		return (NULL);
 	ft_strlcpy(dst, s1, len + 2);
-	
 	return (dst);
 }
 

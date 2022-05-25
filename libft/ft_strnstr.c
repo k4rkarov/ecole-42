@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:41:09 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/23 13:52:31 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:15:11 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ int main(void)
 	printf("%s\n", strnstr(string1, string2, 5));
 	return(0);
 }*/
-

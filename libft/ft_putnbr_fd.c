@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:53:45 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/19 17:14:35 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:36:50 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(n / 10, fd);
 	ft_putchar_fd(n % 10 + '0', fd);
 }
-
 
 /*int main (void)
 {

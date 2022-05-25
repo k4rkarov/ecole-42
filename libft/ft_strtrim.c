@@ -6,12 +6,12 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 14:15:30 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/18 18:08:52 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:16:05 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*res;

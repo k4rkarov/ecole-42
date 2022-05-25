@@ -6,14 +6,11 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:31:23 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/23 19:06:13 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:31:26 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 int	ft_atoi(const char *str);
-
 static int	ft_catnbr(const char *str);
 
 static int	ft_catnbr(const char *str)
@@ -37,8 +34,8 @@ int	ft_atoi(const char *str)
 	int	res;
 
 	count = 0;
-	while (str[count] && (str[count] == ' ' ||
-			   (str[count] >= '\t' && str[count] <= '\r')))
+	while (str[count] && (str[count] == ' '
+		||(str[count] >= '\t' && str[count] <= '\r')))
 		count++;
 	if (str[count] == '-' || str[count] == '+')
 		count++;
