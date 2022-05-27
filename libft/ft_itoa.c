@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:02:29 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/25 20:36:18 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/27 19:29:33 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,20 @@ static int	ft_countdigits(int n)
 	unsigned int	res;
 
 	counter = 0;
-	res = n;
+	res = 0;
 	if (n < 0)
 	{
-		res *= -1;
+		res = n * -1;
 		counter++;
 	}
+	else
+		res = n;
 	while (res > 0)
 	{
 		res = res / 10;
 		counter++;
 	}
-	return (counter - 1);
+	return (counter);
 }
 
 char	*ft_itoa(int n)
@@ -44,24 +46,26 @@ char	*ft_itoa(int n)
 	if (!str)
 		return (0);
 	if (n == 0)
-		return ("0");
-	str[num + 1] = '\0';
+		return (ft_strdup("0"));
 	if (n < 0)
+	{
 		i *= -1;
+	}
+	str[num] = '\0';
 	while (num >= 0)
 	{
-		str[num] = (i % 10) + '0';
+		str[--num] = (i % 10) + '0';
 		i = i / 10;
-		num--;
 	}
 	if (n < 0)
 		str[0] = '-';
 	return (str);
 }
 
-/*int main(void)
+/*#include <stdio.h>
+int main(void)
 {
-	int num = -0;
+	int num = -1;
 	printf("%s\n", ft_itoa(num));
 	return (0);
 }*/

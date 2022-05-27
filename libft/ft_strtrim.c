@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 14:15:30 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/25 20:16:05 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:12:15 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*res;
 	int		start;
 	int		end;
-	
+
 	if (!s1)
 		return (0);
 	res = (char *)s1;

@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 19:39:51 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/25 20:16:55 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:12:59 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		if (size_s >= start && size_max < len)
 		{
 			sub[size_max] = (char)s[size_s];
-			size_max++;		
+			size_max++;
 		}
 		size_s++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 20:13:48 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/23 17:04:51 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:14:03 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	size_dest;
 	size_t	size_src;
-	int i;
+	int		i;
 
 	size_dest = 0;
 	size_src = 0;

@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:41:09 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/25 20:15:11 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:49:41 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 int main(void)
 {
 	const char string1[] = "avada kedavra xabalblau";
-	const char string2[] = "k";
-	printf("%s\n", ft_strnstr(string1, string2, 5));
-	printf("%s\n", strnstr(string1, string2, 5));
+	const char string2[] = "kw";
+	printf("%s\n", ft_strnstr(string1, string2, 8));
+	printf("%s\n", strnstr(string1, string2, 8));
 	return(0);
 }*/

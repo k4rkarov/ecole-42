@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:18:50 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/23 14:41:34 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:19:15 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	if (ft_strlen((char *)src) + 1 < dstsize)
 	{
 		ft_memcpy(dst, src, ft_strlen((char *)src) + 1);
-		return (ft_strlen((char*)src));
+		return (ft_strlen((char *)src));
 	}
 	count = 0;
 	while ((src[count]) && (count < dstsize))
@@ -33,7 +33,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (ft_strlen((char *)src));
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 #include <string.h>
 
 int	main(void)
@@ -46,4 +46,4 @@ int	main(void)
 	printf("%s\n", destiny);
 	printf("%s\n", destiny2);
 	return (0);
-}
+}*/
