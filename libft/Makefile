@@ -24,19 +24,26 @@ SRCS	= ft_isalpha.c \
 		  ft_strjoin.c \
 		  ft_strdup.c \
 		  ft_strtrim.c \
+		  ft_split.c \
 		  ft_itoa.c \
 		  ft_striteri.c \
+		  ft_strmapi.c \
 		  ft_putchar_fd.c \
 		  ft_putstr_fd.c \
 		  ft_putendl_fd.c \
 		  ft_putnbr_fd.c
 
+SRC_BONUS	= ft_lstnew_bonus.c
+
 OBJS	= ${SRCS:.c=.o}
-INCS	= includes
+
+OBJS+BONUS	= ${SRCS_BONUS:.c=.o}
+
 NAME	= libft.a
 LIBC	= ar rc
 CC		= cc
 RM		= rm -f
+
 CFLAGS	= -Wall -Wextra -Werror
 
 .c.o:	
@@ -45,14 +52,18 @@ CFLAGS	= -Wall -Wextra -Werror
 ${NAME}:	${OBJS}
 			${LIBC} ${NAME} ${OBJS}
 
+bonus:		all
+			${CC} ${FLAGS} ${SRCS_BONUS}
+			${AR} ${NAME} ${OBJS_BONUS}
+
 all:		${NAME}
 
 clean:
-			${RM} ${OBJS}
+			${RM} ${OBJS} ${OBJS_BONUS}
 
 fclean:		clean
 			${RM} ${NAME}
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re bonus
