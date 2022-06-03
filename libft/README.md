@@ -1,6 +1,6 @@
 ### <stdlib.h>
 
-<span style="color:blue">some *blue* text</span>.		converts the initial portion of the string pointed to by (str = ASCII) to (int) representation.
+<span style="color=blue">some *blue* text</span>.		converts the initial portion of the string pointed to by (str = ASCII) to (int) representation.
 **ft_calloc**		allocates enough space for (count) objects that are (size) bytes of memory each and returns a pointer to the allocated memory. The allocated memory is    filled with bytes of value zero.
 
 ### <ctype.h>
