@@ -14,47 +14,46 @@
 
 char **ft_split(char const *s, char c)
 {
-    size_t	i;
-    char	*str;
     char	**ret;
+    size_t	i;
     size_t	nsep;
-    size_t	iret;
+    size_t	start;
+    size_t  y;
 
     nsep = 0;
     i = 0;
-    str = ft_strdup(s);
-    while(str[i])
+    y = 0;
+    while(s[i])
     {
-        if (str[i] == c)
+        if (s[i] == c)
         {
             nsep++;
-            str[i] = 0;
         }
         i++;
     }
-    ret = (char **)malloc((nsep + 2) * sizeof(char *));
+    ret = malloc((nsep + 1) * sizeof(char *));
     if (ret == NULL)
+        free(ret);
         return (ret);
-    ret = &str;
     i = 0;
-    iret = 1;
+    start = 0;
     while (i < ft_strlen(s))
     {
-        if (str[i] == 0)
+        if (s[i] == c)
         {
-            ret[iret] = &str[i + 1];
-            iret++;
+            ret[y] = ft_substr(s, start, i - start);
+            start = i + 1;
+            y++;
         }
         i++;
     }
-    ret[iret] = NULL;
     return (ret);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 int main(void)
 {
-    char test[] = "./a t1";
+    char test[] = "ola mundo blz";
     char sep = ' ';
     char **ret;
 
@@ -63,4 +62,4 @@ int main(void)
     {
         printf("%s\n", *ret++);
     }
-}
+} */
