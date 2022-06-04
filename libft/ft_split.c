@@ -5,55 +5,89 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 17:08:01 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/06/01 18:34:00 by ide-frei         ###   ########.fr       */
+/*   Created: 2022/06/04 18:07:16 by ide-frei          #+#    #+#             */
+/*   Updated: 2022/06/04 19:12:55 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char **ft_split(char const *s, char c)
+static int	count_words(char *str, char c)
 {
-    char	**ret;
-    size_t	i;
-    size_t	nsep;
-    size_t	start;
-    size_t  y;
+	int	nword;
 
-    nsep = 0;
-    i = 0;
-    y = 0;
-    while(s[i])
-    {
-        if (s[i] == c)
-        {
-            nsep++;
-        }
-        i++;
-    }
-    ret = malloc((nsep + 1) * sizeof(char *));
-    if (ret == NULL)
-        free(ret);
-        return (ret);
-    i = 0;
-    start = 0;
-    while (i < ft_strlen(s))
-    {
-        if (s[i] == c)
-        {
-            ret[y] = ft_substr(s, start, i - start);
-            start = i + 1;
-            y++;
-        }
-        i++;
-    }
-    return (ret);
+	nword = 0;
+	while (*str)
+	{
+		if (*str != c)
+		{
+			nword++;
+			while (*str != c && *str)
+				str++;
+		}
+		else
+			str++;
+	}
+	return (nword);
+}
+
+static int	get_words(char **pptr, char *str, char c)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	while (*str)
+	{
+		if (*str != c)
+		{
+			len = 0;
+			while (*str != c && *str)
+			{
+				str++;
+				len++;
+			}
+			pptr[i++] = ft_substr(str - len, 0, len);
+			if (!pptr[i - 1])
+				return (0);
+		}
+		else
+			str++;
+	}
+	return (1);
+}
+
+static void	ft_free(char **pptr, size_t size)
+{
+	while (size > 0)
+	{
+		free(pptr[size - 1]);
+		size--;
+	}
+	pptr = NULL;
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**ret;
+	int		nwords;
+
+	if (s == NULL)
+		return (NULL);
+	nwords = count_words((char *)s, c);
+	ret = malloc((nwords + 1) * sizeof(*ret));
+	if (!ret)
+		return (ret);
+	ret[nwords] = NULL;
+	if (!get_words(ret, (char *)s, c))
+		ft_free(ret, nwords + 1);
+	return (ret);
 }
 
 /* #include <stdio.h>
 int main(void)
 {
-    char test[] = "ola mundo blz";
+    char *test = "./a.out var1 var2 var3";
     char sep = ' ';
     char **ret;
 
