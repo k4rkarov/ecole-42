@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:18:50 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/27 16:19:15 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/06/06 12:12:13 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,18 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t	count;
-
 	if (dstsize == 0)
-		return (ft_strlen((char *)src));
-	if (ft_strlen((char *)src) + 1 < dstsize)
+		return (ft_strlen(src));
+	if (ft_strlen(src) < dstsize - 1)
 	{
-		ft_memcpy(dst, src, ft_strlen((char *)src) + 1);
-		return (ft_strlen((char *)src));
+		ft_memcpy(dst, src, ft_strlen(src) + 1);
 	}
-	count = 0;
-	while ((src[count]) && (count < dstsize))
+	else
 	{
-		dst[count] = src[count];
-		count++;
+		ft_memcpy(dst, src, dstsize - 1);
+		dst[dstsize - 1] = '\0';
 	}
-	dst[count - 1] = '\0';
-	return (ft_strlen((char *)src));
+	return (ft_strlen(src));
 }
 
 /*#include <stdio.h>

@@ -37,7 +37,7 @@ SRC_BONUS	= ft_lstnew_bonus.c
 
 OBJS	= ${SRCS:.c=.o}
 
-OBJS+BONUS	= ${SRCS_BONUS:.c=.o}
+OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
 
 NAME	= libft.a
 LIBC	= ar rc
