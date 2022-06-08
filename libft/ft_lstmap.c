@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 17:48:31 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/06/08 17:51:52 by ide-frei         ###   ########.fr       */
+/*   Created: 2022/06/08 18:29:40 by ide-frei          #+#    #+#             */
+/*   Updated: 2022/06/08 20:09:19 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_lst;
-	t_list	*new_elem;
+	t_list	*ret;
+	t_list	*temp;
 
-	if (!f || !del)
-		return (NULL);
-	new_lst = NULL;
+	ret = NULL;
 	while (lst)
 	{
-		if (!(new_elem = ft_lstnew(f(lst->content))))
+		temp = ft_lstnew(f(lst->content));
+		if (!temp)
 		{
-			ft_lstclear(&new_lst, del);
+			ft_lstclear(&ret, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&new_lst, new_elem);
+		ft_lstadd_back(&ret, temp);
 		lst = lst->next;
 	}
-	return (new_lst);
+	return (ret);
 }

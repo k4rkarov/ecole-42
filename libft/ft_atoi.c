@@ -6,12 +6,9 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:31:23 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/27 16:20:31 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/06/08 20:32:13 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int			ft_atoi(const char *str);
-static int	ft_catnbr(const char *str);
 
 static int	ft_catnbr(const char *str)
 {
@@ -38,9 +35,10 @@ int	ft_atoi(const char *str)
 		|| (str[count] >= '\t' && str[count] <= '\r')))
 		count++;
 	if (str[count] == '-' || str[count] == '+')
-		count++;
-	res = ft_catnbr(str + count);
-	if (str[count - 1] == '-')
+		res = ft_catnbr(str + count + 1);
+	else
+		res = ft_catnbr(str + count);
+	if (str[count] == '-')
 		res *= -1;
 	return (res);
 }

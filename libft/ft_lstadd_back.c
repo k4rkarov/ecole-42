@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 17:46:49 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/06/08 17:46:53 by ide-frei         ###   ########.fr       */
+/*   Created: 2022/06/08 18:26:40 by ide-frei          #+#    #+#             */
+/*   Updated: 2022/06/08 18:27:04 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
+	t_list	*last;
+
 	if (!(*lst))
 		*lst = new;
 	else
 	{
-		*lst = ft_lstlast(*lst);
-		(*lst)->next = new;
+		last = ft_lstlast(*lst);
+		if (last)
+			(last)->next = new;
 	}
 }

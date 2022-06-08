@@ -46,7 +46,7 @@ SRC_BONUS	= ft_lstnew.c \
 
 OBJS	= ${SRCS:.c=.o}
 
-OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
+OBJS_BONUS	= ${SRC_BONUS:.c=.o}
 
 NAME	= libft.a
 LIBC	= ar rc
@@ -58,14 +58,13 @@ CFLAGS	= -Wall -Wextra -Werror
 .c.o:	
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}:	${OBJS}
-			${LIBC} ${NAME} ${OBJS}
+$(NAME):	${OBJS}
+			${LIBC} $(NAME) ${OBJS}
 
-bonus:		all
-			${CC} ${FLAGS} ${SRCS_BONUS}
-			${AR} ${NAME} ${OBJS_BONUS}
+bonus:		${OBJS_BONUS}
+			${LIBC} $(NAME) ${OBJS_BONUS}
 
-all:		${NAME}
+all:		$(NAME)
 
 clean:
 			${RM} ${OBJS} ${OBJS_BONUS}

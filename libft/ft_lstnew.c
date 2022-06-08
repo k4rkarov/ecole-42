@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/04 19:21:45 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/06/08 17:48:52 by ide-frei         ###   ########.fr       */
+/*   Created: 2022/06/08 18:30:05 by ide-frei          #+#    #+#             */
+/*   Updated: 2022/06/08 18:30:09 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ t_list	*ft_lstnew(void *content)
 
 	node = malloc(sizeof(t_list));
 	if (!node)
-	{
-		free(node);
 		return (NULL);
-	}
 	node->content = content;
 	node->next = NULL;
 	return (node);

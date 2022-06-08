@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:02:29 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/27 19:29:33 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/06/08 20:46:55 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	ft_countdigits(int n)
 
 	counter = 0;
 	res = 0;
+	if (n == -2147483648)
+		return (-1);
 	if (n < 0)
 	{
 		res = n * -1;
@@ -42,6 +44,8 @@ char	*ft_itoa(int n)
 
 	i = n;
 	num = ft_countdigits(n);
+	if (num == -1)
+		return (ft_strdup("-2147483648")); 
 	str = malloc(sizeof(char) * num + 1);
 	if (!str)
 		return (0);
