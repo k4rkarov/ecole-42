@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 17:38:58 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/05/11 21:15:20 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/06/13 10:46:26 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (count1 < n)
 	{
 		if (string[count1] == let)
-			return ((char *)&string[count1]);
+			return (&string[count1]);
 		count1++;
 	}
-	if (let == 0)
-		return ((char *)&string[count1]);
 	return (0);
 }
 
