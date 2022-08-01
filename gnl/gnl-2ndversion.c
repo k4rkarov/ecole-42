@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:50:06 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/01 15:25:12 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/01 12:06:44 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,33 +25,7 @@ size_t	ft_strlen(const char *str)
 	return (x);
 }
 
-char	*get_rest(char *line)
-{
-	char	*final;
-	int		count1;
-	int		count2;
-
-	count1 = 0;
-	count2 = 0;
-	while (line[count1] && line[count1] != '\n')
-		count1++;
-	if (!line[count1])
-	{
-		free(line);
-		return (NULL);
-	}
-	final = malloc((ft_strlen(line) - count1 + 1) * sizeof(char));
-	if (!final)
-		return (NULL);
-	count1++;
-	while (line[count1])
-		final[count2++] = line[count1++];
-	final[count2] = '\0';
-	free(line);
-	return (final);
-}
-
-char	*get_break(char *line)
+char	*put_new_line(char *line)
 {
 	char	*final;
 	int		count;
@@ -61,9 +35,8 @@ char	*get_break(char *line)
 		return (NULL);
 	while (line[count] && line[count] != '\n')
 		count++;
-	final = malloc((count + 2) * sizeof(char));
-	count = 0;
-	while (line[count] && line[count] != '\n')
+	final = malloc(ft_strlen(line) - count + 2);
+	while (line[count])
 	{	
 		final[count] = line[count];
 		count++;
@@ -74,13 +47,43 @@ char	*get_break(char *line)
 	return (final);
 }
 
+char	*get_break(char *line)
+{
+	int		count1;
+	int		count2;
+	char	*bufferstr;
+	
+	count1 = 0;
+	count2 = 0;
+	while (line[count1] != '\n' && line[count1])
+		count1++;
+	if (!line[count1])
+	{
+		free(line);
+		return (NULL);
+	}
+	bufferstr = malloc(count1 + 1 * sizeof(char));
+	if (!bufferstr)
+		return (NULL);
+	count1 = 0;
+	while (line[count1] != '\n')
+		bufferstr[count2++] = line[count1++];
+	if (line[count1] == '\n')
+		bufferstr[count2++] = line[count1++]; 
+	bufferstr[count2] = '\0';
+	free(line);
+	return (bufferstr);
+}
+
 char	*get_line(int fd, char *line)
 {	
 	char	*buffer_endline;
 	int		br;
-
+	
 	br = 1;
-	buffer_endline = malloc(BUFFER_SIZE + 1 * sizeof(char));
+	buffer_endline = (char *)malloc(BUFFER_SIZE + 1);
+	if (!buffer_endline)
+		return (NULL);
 	while (br != 0 && !ft_strchr(line, '\n'))
 	{
 		br = read(fd, buffer_endline, BUFFER_SIZE);
@@ -99,19 +102,19 @@ char	*get_line(int fd, char *line)
 char	*get_next_line(int fd)
 {
 	static char	*buffer_toread;
-	char		*str_ret;
+	char *str_ret;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
+		return (NULL);
 	buffer_toread = get_line(fd, buffer_toread);
 	if (!buffer_toread)
 		return (NULL);
 	str_ret = get_break(buffer_toread);
-	buffer_toread = get_rest(buffer_toread);
+	buffer_toread = put_new_line(buffer_toread); 
 	return (str_ret);
 }
 
-/*int main(void)
+int main(void)
 {
 	int	fd = open("example.txt", O_RDONLY);	
 	char *str = get_next_line(fd);
@@ -122,4 +125,4 @@ char	*get_next_line(int fd)
 		printf("%s", str);
 	
 	close(fd);
-}*/
+}
