@@ -6,41 +6,34 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:36:38 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/08 17:02:03 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/08 20:45:50 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minitalk.h"
 
-void	handle_sigtstp(int sig)
+void	received_sig(int sig)
 {
-	printf("Stop not allowed, nice try mate\n");
+	if (sig == SIGUSR1)
+		printf('0');
+	else
+		printf('1');
 }
 
-void	handle_sigcont(int sig)
+int main (int atgc, int *argv[])
 {
-	printf("Input number: ");
-	fflush(stdout);
-}
+	int pid;
 
-int	ft_server(void)
-{
 	struct sigaction sa;
-	//sa.sa_handler = &handle_sigtstp;
-	sa.sa_handler = &handle_sigcont;
+	sa.sa_handler = &received_sig;
 	sa.sa_flags = SA_RESTART;
-	//sigaction(SIGTSTP, &sa, NULL);
-	sigaction(SIGCONT, &sa, NULL);
-	int x;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	
-	printf("Input number: ");
-	scanf("%d", &x);
-	printf("Result %d * 5 = %d\n", x, x * 5);	
-	return (0);
-}
-
-int main(void)
-{
-	ft_server();
-	return (0);
+	pid = getpid();
+	while (1)
+	{
+		printf("Server PID: %d\n", pid);
+		usleep(5000);
+	}
 }
