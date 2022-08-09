@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:43:01 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/08 17:58:45 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/09 19:58:49 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 #include <stdio.h>
 #include <time.h>
 #include <sys/wait.h>
+#include "libft/libft.h"
 
-int	ft_client(void);
-int	ft_server(void);
+int	ft_client(int argc, char **argv);
+int	ft_server(int argc, char *argv[]);
 
 #endif
