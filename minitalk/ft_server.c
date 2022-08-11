@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:36:38 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/11 19:54:34 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/11 20:49:25 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,25 @@ int	power(int n, int power)
             res = res * n;
             i++;
 		}
+	printf("%d\n", res);
     return (res);
 }
 
 void	received_sig(int sig)
 {
-	static int	i;
+	static int				i;
 	static unsigned char	str;
 
 	i = 7;
 	if (sig == SIGUSR1)
 	{
-		printf("1\n");
+		//printf("1\n");
 		str = str + power(2, i);
 	}
 	else	
-		printf("0\n");
-	printf("%c\n",str);
+		//printf("0\n");
 	i--;
-	
+
 	if (i < 0)
 	{
 		ft_putchar_fd(str, 1);

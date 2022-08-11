@@ -1,43 +1,36 @@
-SRCS	= ft_client.c \
-		  ft_server.c
+NAME	= minitalk
 
-OBJS	= ${SRCS:.c=.o}
+SERVER	= server
 
-NAME	= minitalk.a
-
-LIBC	= ar -qs
+CLIENT	= client
 
 CC		= cc
 
-LIBFT	= libft/
-
-PRINTF	= printf/
+LIBFT	= libft/libft.a
 
 RM		= rm -f
 
 CFLAGS	= -Wall -Wextra -Werror
 
-.c.o:	
-			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+$(NAME):	server client
 
-$(NAME):	${OBJS}
-			cd $(LIBFT) && make && cp libft.a ../$(NAME)
-			cd $(PRINTF) && make && cp libftprintf.a ../$(NAME)
-			${LIBC} $(NAME) ${OBJS}
+${SERVER}:	${LIBFT} server.c
+			${CC} ${CFLAGS} server.c -o server libft/libft.a
+
+${CLIENT}:	${LIBFT} client.c
+			${CC} ${CFLAGS} client.c -o client libft/libft.a
+
+${LIBFT}:
+			make -C libft
 
 all:		$(NAME)
 
 clean:
-			${RM} ${OBJS} 
+			${RM} ${SERVER} ${CLIENT} 
 			cd $(LIBFT) && make clean
-			cd $(PRINTF) && make clean
 
 fclean:		clean
-			${RM} ${NAME}
-			cd $(LIBFT) && make fclean
-			cd $(PRINTF) && make fclean
 
 re:			fclean all
 
 .PHONY:		all clean fclean re bonus
-
