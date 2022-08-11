@@ -6,35 +6,32 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:46:03 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/09 19:59:20 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:30:35 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minitalk.h"
 
-int ft_client(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	char c = 'a';
-	int i = 7;
+	int 	i = 7;
+	int		index = 0;
+	char	*msg;
 
-	while (i >= 0)
+	(void)argc;
+	msg = argv[2];
+	while (msg[index])
 	{
-		if (c & (1 << i))
+		while (i >= 0)
 		{
-			kill(atoi(argv[1]), SIGUSR1);
+			if (msg[index] & (1 << i))
+				kill(atoi(argv[1]), SIGUSR1);
+			else
+				kill(atoi(argv[1]), SIGUSR2);
 			usleep(200);
+			i--;
 		}
-		else
-		{
-			kill(atoi(argv[1]), SIGUSR2);
-			usleep(200);
-		}
-		i--;
+		index++;
+		i = 7;
 	}
-}
-
-int	main()
-{
-	ft_client();
-	return (0);
 }
