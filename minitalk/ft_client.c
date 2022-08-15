@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:46:03 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/15 20:44:18 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/15 20:52:23 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	message(int pid, char *str)
 
 int	main(int argc, char **argv)
 {
-	char	*msg;
+	char				*msg;
 	struct sigaction	sa;
 
 	sa.sa_handler = confirm_received;
@@ -62,7 +62,8 @@ int	main(int argc, char **argv)
 		message(ft_atoi(argv[1]), msg);
 	else
 	{
-		ft_printf("\033[1;31mERROR! Wrong number of arguments.\nUSAGE:\033[0;31m./client <SERVER pid> <\"message\">\n");
+		ft_printf("\033[1;31mERROR! Wrong number of arguments.\n");
+		ft_printf("\033[1;31mUSAGE:\033[0;31m./client <SERVER pid> <\"message\">\n");
 		return (0);
 	}
 	return (0);

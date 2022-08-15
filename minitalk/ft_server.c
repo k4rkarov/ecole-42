@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:36:38 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/15 20:17:31 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/15 20:53:54 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static int	power(int power)
 static void	received_sig(int sig, siginfo_t *info, void *ucontext)
 {
 	static unsigned char	str;
-	static int				i;
+	static int				i;	
 
-	(void)ucontext;	
+	(void)ucontext;
 	if (sig == SIGUSR1)
 		str = str + power(7 - i);
 	i++;
