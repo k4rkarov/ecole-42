@@ -6,61 +6,59 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:36:38 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/11 20:49:25 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/15 20:17:31 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minitalk.h"
 
-int	power(int n, int power)
+static int	power(int power)
 {
 	int	i;
 	int	res;
+	int	n;
 
 	res = 1;
 	i = 0;
+	n = 2;
 	if (power == 0)
-        return (1);
+		return (1);
 	else
-        while (i != power)
-        {
-            res = res * n;
-            i++;
+	{
+		while (i < power)
+		{
+			res = res * n;
+			i++;
 		}
-	printf("%d\n", res);
-    return (res);
+	}
+	return (res);
 }
 
-void	received_sig(int sig)
+static void	received_sig(int sig, siginfo_t *info, void *ucontext)
 {
-	static int				i;
 	static unsigned char	str;
+	static int				i;
 
-	i = 7;
+	(void)ucontext;	
 	if (sig == SIGUSR1)
+		str = str + power(7 - i);
+	i++;
+	if (i == 8)
 	{
-		//printf("1\n");
-		str = str + power(2, i);
-	}
-	else	
-		//printf("0\n");
-	i--;
-
-	if (i < 0)
-	{
-		ft_putchar_fd(str, 1);
-		i = 7;
+		ft_printf("%c", str);
+		if (str == 0)
+			kill(info->si_pid, SIGUSR2);
+		i = 0;
 		str = 0;
 	}
 }
 
-int main(void)
+int	main(void)
 {
-	struct	sigaction sa;
+	struct sigaction	sa;
 
-	sa.sa_handler = &received_sig;
-	sa.sa_flags = SA_RESTART;
-	printf("Server PID: %d\n", getpid());
+	sa.sa_sigaction = &received_sig;
+	ft_printf("Server PID: %d\n", getpid());
 	while (1)
 	{
 		sigaction(SIGUSR1, &sa, NULL);

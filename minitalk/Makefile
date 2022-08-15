@@ -8,17 +8,17 @@ CC		= cc
 
 LIBFT	= libft/libft.a
 
-RM		= rm -f
+RM		= rm -rf
 
 CFLAGS	= -Wall -Wextra -Werror
 
 $(NAME):	server client
 
-${SERVER}:	${LIBFT} server.c
-			${CC} ${CFLAGS} server.c -o server libft/libft.a
+${SERVER}:	${LIBFT} ft_server.c
+			${CC} ${CFLAGS} ft_server.c -o server libft/libft.a
 
-${CLIENT}:	${LIBFT} client.c
-			${CC} ${CFLAGS} client.c -o client libft/libft.a
+${CLIENT}:	${LIBFT} ft_client.c
+			${CC} ${CFLAGS} ft_client.c -o client libft/libft.a
 
 ${LIBFT}:
 			make -C libft
@@ -27,7 +27,7 @@ all:		$(NAME)
 
 clean:
 			${RM} ${SERVER} ${CLIENT} 
-			cd $(LIBFT) && make clean
+			cd libft && make clean
 
 fclean:		clean
 

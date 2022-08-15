@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:43:01 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/11 20:24:07 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/15 15:17:29 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@
 # include <signal.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-# include <stdio.h>
 
 #endif
