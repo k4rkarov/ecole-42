@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 15:36:38 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/16 18:09:14 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/16 16:32:41 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,20 @@ static int	power(int power)
 	return (res);
 }
 
-static void	received_sig(int sig)
+static void	received_sig(int sig, siginfo_t *info, void *ucontext)
 {
 	static unsigned char	str;
 	static int				i;	
 
+	(void)ucontext;
 	if (sig == SIGUSR1)
 		str = str + power(7 - i);
 	i++;
 	if (i == 8)
 	{
 		write(1, &str, sizeof(char));
+		if (str == 0)
+			kill(info->si_pid, SIGUSR2);
 		i = 0;
 		str = 0;
 	}
@@ -54,7 +57,7 @@ int	main(void)
 {
 	struct sigaction	sa;
 
-	sa.sa_handler = &received_sig;
+	sa.sa_sigaction = &received_sig;
 	ft_printf("Server PID: %d\n", getpid());
 	while (1)
 	{

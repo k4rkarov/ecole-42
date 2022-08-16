@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:46:03 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/16 18:03:11 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/15 20:52:23 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ void	send_sig(int pid, char letter)
 	bits = 7;
 }
 
+static void	confirm_received(int sig)
+{
+	(void)sig;
+	ft_printf("\33[1;32mMESSAGE RECEIVED!\n");
+}
+
 static int	message(int pid, char *str)
 {
 	int	index;
@@ -46,7 +52,10 @@ static int	message(int pid, char *str)
 int	main(int argc, char **argv)
 {
 	char				*msg;
-	
+	struct sigaction	sa;
+
+	sa.sa_handler = confirm_received;
+	sigaction(SIGUSR2, &sa, NULL);
 	(void)argc;
 	msg = argv[2];
 	if (argc == 3)
