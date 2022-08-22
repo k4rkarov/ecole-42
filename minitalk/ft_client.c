@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:46:03 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/16 18:03:11 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:24:00 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static int	message(int pid, char *str)
 
 int	main(int argc, char **argv)
 {
-	char				*msg;
-	
+	char	*msg;	
+
 	(void)argc;
 	msg = argv[2];
 	if (argc == 3)
