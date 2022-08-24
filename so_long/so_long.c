@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 14:42:23 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/22 20:13:56 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/23 21:02:16 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,31 @@ int	main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
-	t_data	img;
-	int		i, y;
-	//int offset = (y * line_length + x * (bits_per_pixel / 8));
-
-	i = 5;
-	y = 5;
+	void	*img;
+	int		x, i, y;
+	char	*relative_path = "images/grass.xpm";
+	int		img_width;
+	int		img_height;
+	
+	y = 0;
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "So long, human");
-	img.img = mlx_new_image(mlx, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
-	while (i < 100)
+	mlx_win = mlx_new_window(mlx, 1366, 768, "So long, human");
+	//img.img = mlx_new_image(mlx, 1920, 1080);
+	//img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
+	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);	
+	while (y < 768)
 	{
-		my_mlx_pixel_put(&img, 5, i, 0x00FF00);
-		my_mlx_pixel_put(&img, i, 5, 0x00FF00);
-		my_mlx_pixel_put(&img, i, i, 0x00FF00);
-		i++;
+		x = 0;
+		while (x < 1366)
+		{
+			mlx_put_image_to_window(mlx, mlx_win, img, x, y);
+			x += img_width;
+		}
+		mlx_put_image_to_window(mlx, mlx_win, img, x, y);
+		y += img_width;
 	}
-	while (y < 100)
-	{
-		my_mlx_pixel_put(&img, y, 100, 0x00FF00);
-		my_mlx_pixel_put(&img, 100, y, 0x00FF00);
-		y++;
-	}
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	relative_path = "images/portal.xpm";
+	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);	
+	mlx_put_image_to_window(mlx, mlx_win, img, 0, 0);
 	mlx_loop(mlx);
 }
