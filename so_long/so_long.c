@@ -6,79 +6,92 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 14:42:23 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/24 20:53:47 by ide-frei         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:31:36 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx/mlx.h"
-#include "gnl/get_next_line.h"
 #include "libft/libft.h"
 #include <fcntl.h>
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+void	display_map(void *windows_rec, void *mlx, char *map_path);
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	read_map(char *map_path, void *mlx)
 {
-	char	*dst;
+	int		width;
+	int		height;
+	int		i;
+	int		fd;
+	char	*line;
+	void	*window;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-int    main(int argc, char **argv)
-{
-    void    *mlx;
-    void    *mlx_win;
-    char    *line;
-    int        fd;
-	int		len_line;
-    char    *map_path;
-	char    *img_path = "images/pokeball.xpm";
-    void    *img;
-    int        img_width, img_height;
-    int x = 0;
-    int i = 0;
-	int y = 0;
-	int line_count = 0;
-
-    (void)argc;
-    mlx = mlx_init();
-    map_path = *(argv + 1);
-    fd = open(map_path, O_RDONLY);
-    line = get_next_line(fd);
-	len_line = ft_strlen(line);
-	img = mlx_xpm_file_to_image(mlx, img_path, &img_width, &img_height);
-    mlx_win = mlx_new_window(mlx, (len_line - 1) * img_width, 320, "Gotta catch'em all!");	
+	width = 0;
+	height = 0;
+	fd = open(map_path, O_RDONLY);
+	line = get_next_line(fd);
 	while (line)
 	{
-		while (*(line + i))
-    	{
-        	if (*(line + i) == '1')
+		i = 0;
+		width = 0;
+		while (line[i++] != '\n')
+			width++;
+		line = get_next_line(fd);
+		height++;
+	}
+	window = mlx_new_window(mlx, width * 64, height * 64, "POKÉMON");
+	close(fd);
+	display_map(window, mlx, map_path);
+}
+
+void	display_map(void *windows_rec, void *mlx, char *map_path)
+{
+	void	*img;
+	int		x;
+	int		y;
+	int		i;
+	int		img_width;
+	int		img_height;
+	int		fd;
+	char	*line;
+	char	*img_path;
+
+	y = 0;
+	fd = open(map_path, O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		i = 0;
+		x = 0;
+		while (line[i])
+		{
+			if (line[i] == '1')
 				img_path = "images/tree.xpm";
-			else if (*(line + i) == 'C')
+			else if (line[i] == 'C')
 				img_path = "images/pikachu.xpm";
-			else if (*(line + i) == 'P')
+			else if (line[i] == 'P')
 				img_path = "images/pokeball.xpm";
-			else if (*(line + i) == 'E')
+			else if (line[i] == 'E')
 				img_path = "images/ash.xpm";
 			else
 				img_path = "images/grass.xpm";
 			img = mlx_xpm_file_to_image(mlx, img_path, &img_width, &img_height);
-		 	mlx_put_image_to_window(mlx, mlx_win, img, x, y);
-        	x += img_width;
-        	i++;
+			mlx_put_image_to_window(mlx, windows_rec, img, x, y);
+			x += 64;
+			i++;
 		}
-		i = 0;
-		x = 0;
-    	line = get_next_line(fd);
+		line = get_next_line(fd);
 		y += img_height;
 	}
-    mlx_loop(mlx);
-    return (0);
+	close(fd);
+	mlx_loop(mlx);
+}
+
+int	main(int argc, char **argv)
+{
+	void	*mlx;
+
+	(void)argc;
+	mlx = mlx_init();
+	read_map(argv[1], mlx);
+	return (0);
 }
