@@ -1,16 +1,32 @@
-all: main
+SRCS		= aux_functions.c \
+			aux_functions2.c \
+			main.c \
+			operations1.c \
+			operations2.c \
+			operations3.c \
+			sort_algorythm.c \
+			validation.c
 
-CC = clang
-override CFLAGS += -g -Wno-everything -pthread -lm
+HEADER		= push_swap.h
 
-SRCS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.c' -print)
-HEADERS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.h' -print)
+NAME		= push_swap
 
-main: $(SRCS) $(HEADERS)
-	$(CC) $(CFLAGS) $(SRCS) -o "$@"
+CC			= cc
 
-main-debug: $(SRCS) $(HEADERS)
-	$(CC) $(CFLAGS) -O0 $(SRCS) -o "$@"
+RM			= rm -f
+
+CFLAGS		= -Wall -Wextra -Werror
+
+$(NAME):	${SRCS} ${HEADER}
+			${CC} ${CFLAGS} ${SRCS} -o ${NAME}
+
+all:		$(NAME)
 
 clean:
-	rm -f main main-debug
+			${RM} $(NAME)
+
+fclean:		clean
+
+re:			fclean all
+
+.PHONY:		all clean fclean re
