@@ -1,4 +1,6 @@
-SRCS	= so_long.c
+SRCS	= main.c \
+		  so_long.c \
+		  validation.c
 
 CC		= cc
 
@@ -11,7 +13,7 @@ NAME	= press_start
 LIBFT	= libft/libft.a
 
 %.o: %.c
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx -g -c $< -o $@
 
 $(NAME): $(SRCS) $(LIBFT)
 	$(CC) $(SRCS) -Llibft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
