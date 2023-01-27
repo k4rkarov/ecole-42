@@ -1,4 +1,5 @@
 SRCS	= fractol.c \
+		  render.c \
 		  main.c
 
 CC		= cc
