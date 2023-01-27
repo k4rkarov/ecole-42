@@ -1,4 +1,5 @@
-SRCS	= fractol.c
+SRCS	= fractol.c \
+		  main.c
 
 CC		= cc
 
