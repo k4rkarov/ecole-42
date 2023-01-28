@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:47:52 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/15 14:13:46 by ide-frei         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:04:44 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "../libft/libft.h"
 
 int		ft_printf(const char *beg, ...);
 int		ft_hex_converter(unsigned long long n, int b);

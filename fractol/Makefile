@@ -1,5 +1,6 @@
 SRCS	= fractol.c \
 		  render.c \
+		  formula.c \
 		  main.c
 
 CC		= cc
@@ -16,7 +17,7 @@ LIBFT	= libft/libft.a
 	$(CC) $(CFLAGS) -Imlx -g -c $< -o $@
 
 $(NAME): $(SRCS) $(LIBFT)
-	$(CC) $(SRCS) -Llibft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(SRCS) -Llibft -lft -Lmlx -lmlx -framework OpenGL -Ofast -framework AppKit -o $(NAME)
 
 $(LIBFT):
 	make -C libft

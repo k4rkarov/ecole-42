@@ -6,13 +6,13 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 18:37:36 by ide-frei          #+#    #+#             */
-/*   Updated: 2023/01/27 19:03:47 by ide-frei         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:06:13 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	draw_map(t_map *fractol)
+void	open_win(t_map *fractol)
 {
 	fractol->mlx = mlx_init();
 	fractol->mlx_win = mlx_new_window(fractol->mlx, WIDTH, HEIGHT, "FRACTOL");
@@ -41,30 +41,39 @@ int	close_x(t_map *vars)
 void	error_check(t_map *vars, int argc, char **argv)
 {
 	if (argc > 1 && argc < 3)
+		fractalen(vars, argc, argv);
+	else
 	{
-		if (ft_strncmp(argv[1], "julia", 5) == 0 && argc == 2)
-		{
-			vars->fractype = 'j';
-			printf("\e[1;32mrendering julia...\e[0;0m\n");
-			return ;
-		}
-		else if (ft_strncmp(argv[1], "mandelbrot", 10) == 0 && argc == 2)
-		{
-			vars->fractype = 'm';
-			printf("\e[1;32mrendering mandelbrot...\e[0;0m\n");
-			return ;
-		}
-		else
-		{
-			printf("\n\e[1;31mINVALID OPTION!\e[0;0m\n \
-					Usage:\n./fractol.o julia\n./fractol.o mandelbrot\n\n");
-			exit(0);
-		}
+		ft_printf("\n\e[1;31mINVALID OPTION!\e[0;0m\njulia1,2,3\nmandelbrot\n\n");
+		exit(0);
+	}
+}
+
+void	fractalen(t_map *vars, int argc, char **argv)
+{
+	if (ft_strncmp(argv[1], "julia1", 7) == 0 && argc == 2)
+	{
+		vars->fractype = 'j';
+		return ;
+	}
+	if (ft_strncmp(argv[1], "julia2", 7) == 0 && argc == 2)
+	{
+		vars->fractype = '2';
+		return ;
+	}
+	if (ft_strncmp(argv[1], "julia3", 7) == 0 && argc == 2)
+	{
+		vars->fractype = '3';
+		return ;
+	}
+	else if (ft_strncmp(argv[1], "mandelbrot", 11) == 0 && argc == 2)
+	{
+		vars->fractype = 'm';
+		return ;
 	}
 	else
 	{
-		printf("\n\e[1;31mINVALID OPTION!\e[0;0m\n \
-				Usage:\n./fractol.o julia\n./fractol.o mandelbrot\n\n");
+		ft_printf("\n\e[1;31mINVALID OPTION!\e[0;0m\njulia1,2,3\nmandelbrot\n\n");
 		exit(0);
 	}
 }
