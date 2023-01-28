@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 18:43:42 by ide-frei          #+#    #+#             */
-/*   Updated: 2023/01/28 15:05:20 by ide-frei         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:08:50 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "./mlx/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
-# include <stdio.h> //tirar e trocar pra write e apagar 
 # include <math.h>
 
 # define WIDTH 800
