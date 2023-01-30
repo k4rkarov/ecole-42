@@ -9,7 +9,7 @@ CFLAGS	= -Wall -Wextra -Werror
 
 RM		= rm -rf
 
-NAME	= fractol.o
+NAME	= fractol
 
 LIBFT	= libft/libft.a
 

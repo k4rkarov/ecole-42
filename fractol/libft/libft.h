@@ -6,7 +6,7 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:47:52 by ide-frei          #+#    #+#             */
-/*   Updated: 2022/08/24 19:56:09 by ide-frei         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:21:47 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "../printf/ft_printf.h"
-# include "../gnl/get_next_line.h"
 
 typedef struct s_list
 {

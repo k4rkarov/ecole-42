@@ -6,14 +6,14 @@
 /*   By: ide-frei <ide-frei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 18:43:42 by ide-frei          #+#    #+#             */
-/*   Updated: 2023/01/28 15:08:50 by ide-frei         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:21:35 by ide-frei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "../libft/libft.h"
+# include "./libft/libft.h"
 # include "./printf/ft_printf.h"
 # include "./mlx/mlx.h"
 # include <fcntl.h>
