@@ -1,26 +1,36 @@
+#include <stdlib.h>
+
 char	*ft_strdup(char *src)
 {
-	char	*dst;
-	int		len;
+	char	*dup;
+	int		len = 0;
+	int		i = 0;
 
-	while (src)
-		src++;
-	len = src;
-	src = 0;
-	dst = (char *)malloc(1 * len + 1);
-	if (dst == NULL)
+	while (src[i])
+		i++;
+	len = i;
+	i = 0;
+	dup = (char *)malloc(1 * len + 1);
+	if (dup == NULL)
 		return (NULL);
-	while(src)
+	while(src[i])
 	{
-		dst = *src;
-		src++;
+		dup[i] = src[i];
+		i++;
 	}
-	dst = '\0';
-	return (dst);
+	dup[i] = '\0';
+	return (dup);
 }
 
-int	main()
+#include <stdio.h>
+int main (void)
 {
-
-	return (0);
+ 	char *str = "igor";
+    char *dup;
+    
+	dup = ft_strdup(str);
+    
+	printf("Original: '%s'\n", str);
+	printf("Duplicate: '%s'\n", dup);
+    return (0);	
 }
